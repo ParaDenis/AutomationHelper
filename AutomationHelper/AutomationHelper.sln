@@ -5,13 +5,13 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomationHelper", "AutomationHelper\AutomationHelper.csproj", "{C791C004-4A84-46DC-8BCB-A31B64887410}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScreenSaver", "C:\CodedUI VS2013 version\ScreenSaver\ScreenSaver.csproj", "{AEEAC632-3306-44DB-BA64-357EAF254907}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScreenSaver", "%ATProSolutionPath%\ScreenSaver\ScreenSaver.csproj", "{AEEAC632-3306-44DB-BA64-357EAF254907}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PerformanceMonitor", "C:\CodedUI VS2013 version\PerformanceMonitor\PerformanceMonitor.csproj", "{22E01A4D-FD6F-40A7-ABE8-A5C62F93F983}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PerformanceMonitor", "%ATProSolutionPath%\PerformanceMonitor\PerformanceMonitor.csproj", "{22E01A4D-FD6F-40A7-ABE8-A5C62F93F983}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageFinder", "C:\CodedUI VS2013 version\ImageFinder\ImageFinder.csproj", "{F4EE5756-1CC4-43CE-8950-A200D81FDE1F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageFinder", "%ATProSolutionPath%\ImageFinder\ImageFinder.csproj", "{F4EE5756-1CC4-43CE-8950-A200D81FDE1F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChangeResolution", "C:\CodedUI VS2013 version\ChangeResolution\ChangeResolution.csproj", "{E412104B-681F-4071-8D71-59BEF39C9C3D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChangeResolution", "%ATProSolutionPath%\ChangeResolution\ChangeResolution.csproj", "{E412104B-681F-4071-8D71-59BEF39C9C3D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
