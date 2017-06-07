@@ -41,6 +41,10 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Waiters\AutoTask.cs" />
+    <Compile Include="Waiters\TaskWorker.cs" />
+    <Compile Include="Waiters\Wait.cs" />
+    <Compile Include="Waiters\WaitUtilities.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BatFiles\" />
@@ -54,7 +58,6 @@
     <Folder Include="Mailing\" />
     <Folder Include="Performance\" />
     <Folder Include="RestAPI\" />
-    <Folder Include="Waiters\" />
     <Folder Include="Win32API\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

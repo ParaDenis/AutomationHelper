@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace AutomationHelper
-
+{
     public class Class1
-    {fff
+    {
     }
 }

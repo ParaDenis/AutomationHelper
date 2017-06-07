@@ -2,14 +2,12 @@
 using System.Diagnostics;
 using System.Linq;
 using System.Threading;
-using ATPro_Automation_NUnit.BasicMethods;
-using log4net;
 
-namespace ATPro_Automation_NUnit
+namespace AutomationHelper.Waiters
 {
     public class Wait
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof (Wait));
+        //private static readonly ILog Log = LogManager.GetLogger(typeof (Wait));
 
         public static void UntilTrue(Func<bool> p, string err, int timeout = 15000, int interval = 1000)
         {
@@ -22,7 +20,7 @@ namespace ATPro_Automation_NUnit
                 res = p();
                 if (res)
                 {
-                    Log.Info(String.Format("WaitUntilTrue passed, elapsed {0} ms", timer.ElapsedMilliseconds));
+                    //Log.Info(String.Format("WaitUntilTrue passed, elapsed {0} ms", timer.ElapsedMilliseconds));
                     return;
                 }
                 if (timer.ElapsedMilliseconds > timeout)
@@ -32,26 +30,22 @@ namespace ATPro_Automation_NUnit
             }
         }
 
-        public static void UntilProcessNotExist(string processName = Consts.APPLICATION_PROCESS_NAME)
+        public static void UntilProcessNotExist(string processName = "")
         {
-            UntilNoException(
-                () =>
-                    Assert.IsTrue(!Process.GetProcessesByName(processName).Any(),
-                        "'" + processName + "' process stil exist"), timeout: 30*1000, interval: 10);
+            UntilTrue(
+                () =>!Process.GetProcessesByName(processName).Any(),"'" + processName + "' process stil exist", timeout: 30*1000, interval: 10);
         }
 
-        public static void UntilProcessExist(string processName = Consts.APPLICATION_PROCESS_NAME)
+        public static void UntilProcessExist(string processName = "")
         {
-            UntilNoException(
-                () =>
-                    Assert.IsTrue(Process.GetProcessesByName(processName).Any(),
-                        "Error: '" + processName + "' process stil exist"), timeout: 30 * 1000, interval: 10);
+            UntilTrue(
+                () =>Process.GetProcessesByName(processName).Any(),"Error: '" + processName + "' process stil exist", timeout: 30 * 1000, interval: 10);
         }
 
         public static void Sleep(int milliseconds)
         {
-            if (Debugger.IsAttached)
-                Log.Info("WAIT.SLEEP: " + milliseconds);
+            //if (Debugger.IsAttached)
+                //Log.Info("WAIT.SLEEP: " + milliseconds);
             Thread.Sleep(milliseconds);
         }
 
@@ -65,16 +59,15 @@ namespace ATPro_Automation_NUnit
                 try
                 {
                     var temp = f();
-                    if (message != String.Empty)
-                        Log.Info(String.Format("WaitUntilNoException passed, elapsed {0} ms", timer.ElapsedMilliseconds));
+                    //if (message != String.Empty)
+                        //Log.Info(String.Format("WaitUntilNoException passed, elapsed {0} ms", timer.ElapsedMilliseconds));
                     return temp;
                 }
                 catch (Exception ex)
                 {
                     if (message != ex.Message)
                     {
-                        Log.Warn(String.Format("WaitUntilNoException throws {0}. Elapsed  {1}s", ex.Message,
-                            timer.ElapsedMilliseconds));
+                        //Log.Warn(String.Format("WaitUntilNoException throws {0}. Elapsed  {1}s", ex.Message,timer.ElapsedMilliseconds));
                         message = ex.Message;
                     }
                     if (timer.ElapsedMilliseconds > timeout)
@@ -87,7 +80,7 @@ namespace ATPro_Automation_NUnit
 
         public static void UntilNoException(Action f, int timeout = 30000, int interval = 1000)
         {
-            Log.DebugCustom("Wait.UntilNoException(Action f) started!");
+            //Log.DebugCustom("Wait.UntilNoException(Action f) started!");
             var timer = new Stopwatch();
             timer.Start();
             string message = String.Empty;
@@ -96,16 +89,15 @@ namespace ATPro_Automation_NUnit
                 try
                 {
                     f();
-                    if (message != String.Empty)
-                        Log.Info(String.Format("WaitUntilNoException passed, elapsed {0}s", timer.ElapsedMilliseconds / 1000));
+                    //if (message != String.Empty)
+                    //    Log.Info(String.Format("WaitUntilNoException passed, elapsed {0}s", timer.ElapsedMilliseconds / 1000));
                     return;
                 }
                 catch (Exception ex)
                 {
                     if (message != ex.Message)
                     {
-                        Log.Warn(String.Format("WaitUntilNoException throws {0}. Elapsed  {1}s", ex.Message,
-                            timer.ElapsedMilliseconds / 1000));
+                        //Log.Warn(String.Format("WaitUntilNoException throws {0}. Elapsed  {1}s", ex.Message,timer.ElapsedMilliseconds / 1000));
                         message = ex.Message;
                     }
                     if (timer.ElapsedMilliseconds > timeout)
@@ -127,7 +119,7 @@ namespace ATPro_Automation_NUnit
                 }
                 catch (Exception ex)
                 {
-                    Log.Warn("UntilNumberOfExceptions (" + i + "): " + ex.Message);
+                    //Log.Warn("UntilNumberOfExceptions (" + i + "): " + ex.Message);
                     if (i == times - 1) throw ex;
                     Sleep(interval);
                 }
@@ -144,14 +136,14 @@ namespace ATPro_Automation_NUnit
                 }
                 catch (Exception ex)
                 {
-                    Log.Warn("UntilNumberOfExceptions<T> (" + i + "): " + ex.Message);
+                    //Log.Warn("UntilNumberOfExceptions<T> (" + i + "): " + ex.Message);
                     if (i == times - 1) throw ex;
                     Sleep(interval);
                 }
             }
             throw new Exception("UntilNumberOfExceptions " + times + " times");
         }
-
+        /*
         public static string ForRequest(string url, bool exact = true, int timeout = Timeouts.WAIT_FOR_REQUEST_TIMEOUT)
         {
             string result = "";
@@ -228,6 +220,6 @@ namespace ATPro_Automation_NUnit
                 FiddlerBasicMethods.StopFiddler();
             }
             return result;
-        }
+        }*/
     }
 }

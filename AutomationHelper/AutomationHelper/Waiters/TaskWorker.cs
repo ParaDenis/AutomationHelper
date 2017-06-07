@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using log4net;
 
-namespace ATPro_Automation_NUnit.Common
+namespace AutomationHelper.Waiters
 {
     public class TaskWorker
     {
 
         private static  ObservableCollection<Task> _task = new ObservableCollection<Task>();
-        private static readonly ILog Log = LogManager.GetLogger(typeof (TaskWorker));
+        //private static readonly ILog Log = LogManager.GetLogger(typeof (TaskWorker));
 
         public static Task Start(Action func, int timeout)
         {
@@ -23,14 +21,14 @@ namespace ATPro_Automation_NUnit.Common
                 {
                     using (cancelToken.Token.Register(Thread.CurrentThread.Abort))
                     {
-                        Log.DebugCustom("Task {0} was started", Task.CurrentId);
+                        //Log.DebugCustom("Task {0} was started", Task.CurrentId);
                         func();
-                        Log.DebugCustom("Task {0} finished successfully", Task.CurrentId);
+                        //Log.DebugCustom("Task {0} finished successfully", Task.CurrentId);
                     }
                 }
                 catch (ThreadAbortException)
                 {
-                    Log.DebugCustom("Task {0} was aborted by timeout {1}ms", Task.CurrentId, timeout);
+                    //Log.DebugCustom("Task {0} was aborted by timeout {1}ms", Task.CurrentId, timeout);
                 }
             }, cancelToken.Token, TaskCreationOptions.AttachedToParent, TaskScheduler.Current);
             _task.Add(task);
@@ -81,7 +79,7 @@ namespace ATPro_Automation_NUnit.Common
     }
     public class TaskWorker<T>
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(TaskWorker<T>));
+        //private static readonly ILog Log = LogManager.GetLogger(typeof(TaskWorker<T>));
         public static Task<T> Start(Func<T> func, int timeout)
         {
             var cancelToken = new CancellationTokenSource();
@@ -92,15 +90,15 @@ namespace ATPro_Automation_NUnit.Common
                 {
                     using (cancelToken.Token.Register(Thread.CurrentThread.Abort))
                     {
-                        Log.DebugCustom("Task {0} was started", Task.CurrentId);
+                        //Log.DebugCustom("Task {0} was started", Task.CurrentId);
                         var temp = func(); 
-                        Log.DebugCustom("Task {0} finished successfully", Task.CurrentId);
+                        //Log.DebugCustom("Task {0} finished successfully", Task.CurrentId);
                         return temp;
                     }
                 }
                 catch (ThreadAbortException)
                 {
-                    Log.DebugCustom("Task {0} was aborted by timeout {1}ms", Task.CurrentId, timeout);
+                    //Log.DebugCustom("Task {0} was aborted by timeout {1}ms", Task.CurrentId, timeout);
                 }
                 return default(T);
             }, cancelToken.Token, TaskCreationOptions.AttachedToParent, TaskScheduler.Current);
@@ -116,19 +114,19 @@ namespace ATPro_Automation_NUnit.Common
                 {
                     using (cancelToken.Token.Register(Thread.CurrentThread.Abort))
                     {
-                        Log.DebugCustom("Task {0} was started", Task.CurrentId);
+                        //Log.DebugCustom("Task {0} was started", Task.CurrentId);
                         var temp = func();
-                        Log.DebugCustom("Task {0} finished successfully", Task.CurrentId);
+                        //Log.DebugCustom("Task {0} finished successfully", Task.CurrentId);
                         return temp;
                     }
                 }
                 catch (ThreadAbortException)
                 {
-                    Log.DebugCustom("Task {0} was aborted by timeout {1}ms", Task.CurrentId, timeout);
+                    //Log.DebugCustom("Task {0} was aborted by timeout {1}ms", Task.CurrentId, timeout);
                 }
                 catch (Exception ex)
                 {
-                    Log.DebugCustom("Task {0} throwm exception '{1}'", Task.CurrentId, ex.Message);
+                    //Log.DebugCustom("Task {0} throwm exception '{1}'", Task.CurrentId, ex.Message);
                 }
                 return default(T);
             }, cancelToken.Token, TaskCreationOptions.AttachedToParent, TaskScheduler.Current);

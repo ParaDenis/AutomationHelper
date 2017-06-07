@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using ATPro_Automation_NUnit.Common;
-using log4net;
 
-namespace ATPro_Automation_NUnit.ATProCommon
+namespace AutomationHelper.Waiters
 {
     //public class WaitTimer
     //{
