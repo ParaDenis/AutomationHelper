@@ -24,3 +24,5 @@ AutomationHelper/packages/Testura.Android.0.11.0/build/testura.android.targets
 AutomationHelper/packages/Castle.Core.3.3.3/readme.txt
 AutomationHelper/packages/NUnitTestAdapter.2.0.0/tools/install.ps1
 AutomationHelper/packages/Testura.Android.0.11.0/testura-helper.apk
+AutomationHelper/AutomationHelper/packages/
+AutomationHelper/AutomationHelper/AutomationHelper/obj/
