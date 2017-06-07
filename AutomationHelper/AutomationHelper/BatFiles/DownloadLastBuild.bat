@@ -1,0 +1,1 @@
+"%programfiles(x86)%\Microsoft Visual Studio 12.0\Common7\IDE\MSTest.exe" /testcontainer:"%ATProSolutionPath%\ATPro_Automation_NUnit\bin\Release\ATPro_Automation_NUnit.dll" /test:DownloadLastBuildFromShareTest

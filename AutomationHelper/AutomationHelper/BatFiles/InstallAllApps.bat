@@ -1,0 +1,9 @@
+"%programfiles(x86)%\Microsoft Visual Studio 12.0\Common7\IDE\MSTest.exe" /testcontainer:"%ATProSolutionPath%\ATPro_Automation_NUnit\bin\Release\ATPro_Automation_NUnit.dll" /test:InstallAtProDebugTest
+"%programfiles(x86)%\Microsoft Visual Studio 12.0\Common7\IDE\MSTest.exe" /testcontainer:"%ATProSolutionPath%\ATPro_Automation_NUnit\bin\Release\ATPro_Automation_NUnit.dll" /test:InstallATProIMCTest
+"%programfiles(x86)%\Microsoft Visual Studio 12.0\Common7\IDE\MSTest.exe" /testcontainer:"%ATProSolutionPath%\ATPro_Automation_NUnit\bin\Release\ATPro_Automation_NUnit.dll" /test:InstallFlatTraderTest
+"%programfiles(x86)%\Microsoft Visual Studio 12.0\Common7\IDE\MSTest.exe" /testcontainer:"%ATProSolutionPath%\ATPro_Automation_NUnit\bin\Release\ATPro_Automation_NUnit.dll" /test:InstallFOREXTest
+"%programfiles(x86)%\Microsoft Visual Studio 12.0\Common7\IDE\MSTest.exe" /testcontainer:"%ATProSolutionPath%\ATPro_Automation_NUnit\bin\Release\ATPro_Automation_NUnit.dll" /test:InstallInteractiveMarketsTraderTest
+"%programfiles(x86)%\Microsoft Visual Studio 12.0\Common7\IDE\MSTest.exe" /testcontainer:"%ATProSolutionPath%\ATPro_Automation_NUnit\bin\Release\ATPro_Automation_NUnit.dll" /test:InstallMarginLiveTest
+"%programfiles(x86)%\Microsoft Visual Studio 12.0\Common7\IDE\MSTest.exe" /testcontainer:"%ATProSolutionPath%\ATPro_Automation_NUnit\bin\Release\ATPro_Automation_NUnit.dll" /test:InstallMarginLiveIMCTest
+"%programfiles(x86)%\Microsoft Visual Studio 12.0\Common7\IDE\MSTest.exe" /testcontainer:"%ATProSolutionPath%\ATPro_Automation_NUnit\bin\Release\ATPro_Automation_NUnit.dll" /test:InstallSharePriceTraderTest
+"%programfiles(x86)%\Microsoft Visual Studio 12.0\Common7\IDE\MSTest.exe" /testcontainer:"%ATProSolutionPath%\ATPro_Automation_NUnit\bin\Release\ATPro_Automation_NUnit.dll" /test:InstallTradefairTest
