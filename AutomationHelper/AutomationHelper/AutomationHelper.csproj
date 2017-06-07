@@ -39,6 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GoogleAPI\GoogleSpreadsheet\GoogleExcelHelper.cs" />
+    <Compile Include="HTML\HtmlLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Waiters\AutoTask.cs" />
     <Compile Include="Waiters\TaskWorker.cs" />
@@ -49,8 +51,6 @@
     <Folder Include="Extensions\" />
     <Folder Include="FiddlerCoreAPI\" />
     <Folder Include="GoogleAPI\GoogleDrive\" />
-    <Folder Include="GoogleAPI\GoogleSpreadsheet\" />
-    <Folder Include="HtmlLogger\" />
     <Folder Include="LANAPI\" />
     <Folder Include="Mailing\" />
     <Folder Include="Performance\" />
@@ -64,6 +64,12 @@
     <None Include="BatFiles\GitPull.bat" />
     <None Include="BatFiles\InstallAllApps.bat" />
     <None Include="BatFiles\TestsToRun.bat" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="HTML\clip.png" />
+    <Content Include="HTML\jquery-3.1.1.js" />
+    <Content Include="HTML\ResultHTML.htm" />
+    <Content Include="HTML\TableRowTemplate.htm" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
