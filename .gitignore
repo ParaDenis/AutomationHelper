@@ -1,0 +1,26 @@
+AutomationHelper/packages/MedallionShell.1.2.1/MedallionShell.1.2.1.nupkg
+AutomationHelper/packages/MedallionShell.1.2.1/lib/net45/MedallionShell.XML
+AutomationHelper/packages/MedallionShell.1.2.1/lib/netstandard1.3/MedallionShell.xml
+AutomationHelper/packages/NUnit.3.0.1/CHANGES.txt
+AutomationHelper/packages/NUnit.3.0.1/LICENSE.txt
+AutomationHelper/packages/NUnit.3.0.1/NOTICES.txt
+AutomationHelper/packages/NUnit.3.0.1/NUnit.3.0.1.nupkg
+AutomationHelper/packages/Testura.Android.0.11.0/uiautomator-stub-bundle.jar
+AutomationHelper/packages/Testura.Android.0.11.0/uiautomator-stub.jar
+*.nupkg
+*.xml
+AutomationHelper/AutomationHelper/obj/Debug/AutomationHelper.csproj.FileListAbsolute.txt
+AutomationHelper/AutomationHelper/obj/Debug/TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs
+AutomationHelper/packages/Castle.Core.3.3.3/ASL - Apache Software Foundation License.txt
+AutomationHelper/packages/Castle.Core.3.3.3/Changes.txt
+AutomationHelper/AutomationHelper/obj/Debug/TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs
+AutomationHelper/AutomationHelper/obj/Debug/TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs
+AutomationHelper/packages/Castle.Core.3.3.3/BreakingChanges.txt
+AutomationHelper/packages/Castle.Core.3.3.3/License.txt
+AutomationHelper/packages/Testura.Android.0.11.0/LICENSE.txt
+AutomationHelper/packages/Testura.Android.0.11.0/README.md
+AutomationHelper/packages/Newtonsoft.Json.7.0.1/tools/install.ps1
+AutomationHelper/packages/Testura.Android.0.11.0/build/testura.android.targets
+AutomationHelper/packages/Castle.Core.3.3.3/readme.txt
+AutomationHelper/packages/NUnitTestAdapter.2.0.0/tools/install.ps1
+AutomationHelper/packages/Testura.Android.0.11.0/testura-helper.apk
