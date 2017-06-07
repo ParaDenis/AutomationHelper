@@ -16,7 +16,6 @@ namespace AutomationHelper.Waiters
             while (true)
             {
                 bool res= false;
-                //ExecuteAction(() => { res = p(); },timeout/3, "Executing UntilTrue action");
                 res = p();
                 if (res)
                 {
@@ -44,8 +43,7 @@ namespace AutomationHelper.Waiters
 
         public static void Sleep(int milliseconds)
         {
-            //if (Debugger.IsAttached)
-                //Log.Info("WAIT.SLEEP: " + milliseconds);
+            //Log.DebugCustom("WAIT.SLEEP: " + milliseconds);
             Thread.Sleep(milliseconds);
         }
 

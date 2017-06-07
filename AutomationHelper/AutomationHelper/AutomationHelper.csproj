@@ -44,7 +44,6 @@
     <Compile Include="Waiters\AutoTask.cs" />
     <Compile Include="Waiters\TaskWorker.cs" />
     <Compile Include="Waiters\Wait.cs" />
-    <Compile Include="Waiters\WaitUtilities.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BatFiles\" />
