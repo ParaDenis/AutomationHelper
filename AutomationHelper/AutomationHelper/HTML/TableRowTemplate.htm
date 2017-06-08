@@ -1,0 +1,11 @@
+﻿<tr>
+    <td width="300px">{TEST_NAME}</td>
+    <td width="20px">
+        <p class="{TEST_OUTCOME}" title="Click to see Test Trace" onmouseover="this.style.color='{ON_MOUSE_OVER}'" onmouseout="this.style.color='{ON_MOUSE_OUT}'" onclick="superTogle('#{TOGGLE_FUNC_ID}','{SCREENSHOT_PATH}','{LOGS_DIV_ID}','{TEST_NAME}')">_</p>
+    </td>
+    <td width="140px">{EXECUTION_TIME}</td>
+    <td width="70px"><p align="center">{RAM_USAGE}</p></td>
+    <div id = "{LOGS_DIV_ID}" style="display:none">
+        {STACK_TRACE}
+    </div>
+</tr>
