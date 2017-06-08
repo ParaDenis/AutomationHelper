@@ -126,8 +126,8 @@
   <ItemGroup>
     <Compile Include="Extensions\LinqExtensions.cs" />
     <Compile Include="GoogleAPI\GoogleConnection.cs" />
-    <Compile Include="GoogleAPI\GoogleExcelParser.cs" />
-    <Compile Include="GoogleAPI\GoogleIO.cs" />
+    <Compile Include="GoogleAPI\GoogleSpreadsheetHelper.cs" />
+    <Compile Include="GoogleAPI\GoogleDriveHelper.cs" />
     <Compile Include="HTML\HtmlLogger.cs" />
     <Compile Include="Mailing\Mailer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

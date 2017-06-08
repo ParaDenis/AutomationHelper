@@ -2,32 +2,29 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using AutomationHelper.GoogleAPI;
 using AutomationHelper.Extensions;
 using AutomationHelper.Waiters;
-using Google.Apis.Auth.OAuth2;
 using Google.Apis.Drive.v2;
 using Google.Apis.Drive.v2.Data;
-using Google.Apis.Services;
 using File = Google.Apis.Drive.v2.Data.File;
 
 namespace AutomationHelper.GoogleAPI
 {
-    public class GoogleIO
+    public class GoogleDriveHelper
     {
         //private static readonly ILog Log = LogManager.GetLogger(typeof(GoogleIO)); 
         //private ServiceAccountCredential serviceAccountCredential;
-        private DriveService service;
-        public GoogleIO(string applicationName, byte[] jsonKey)
+        private DriveService _service;
+        public GoogleDriveHelper(DriveService driveService)
         {
-            service = new GoogleConnection().GetDriveService(applicationName, jsonKey);
+            _service = driveService;
         }
 
         private List<File> GetFileList(string folderId)
         {
             return Wait.UntilNoException(() =>
             {
-                var listRequest = service.Files.List();
+                var listRequest = _service.Files.List();
                 listRequest.Q = "'" + folderId + "' in parents and trashed=false ";
                 return listRequest.Execute().Items.ToList();
             });
@@ -37,7 +34,7 @@ namespace AutomationHelper.GoogleAPI
         /// old method is GetLastBuildFolder
         /// </summary>
         /// <returns></returns>
-        private File GetLastCreatedFolder(string folderID)
+        private File GetLastCreatedFolderIn(string folderID)
         {
             return
                 GetFileList(folderID)
@@ -183,11 +180,10 @@ namespace AutomationHelper.GoogleAPI
                     System.IO.File.WriteAllBytes(_saveTo, arrBytes);*/
                     var outputStream = new MemoryStream(); 
                     
-                    var t = service.Files.Get(fileResource.Id);
+                    var t = _service.Files.Get(fileResource.Id);
                     t.Download(outputStream);
-                    Assert
-                    Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(outputStream.Length, fileResource.FileSize,
-                        "Downloaded size invalid: " + fileResource.Title);
+                    if(outputStream.Length!= fileResource.FileSize)
+                        throw new Exception("Downloaded size invalid: " + fileResource.Title);
                     System.IO.File.WriteAllBytes(_saveTo, outputStream.ToArray());
                 }
                 else throw new Exception("DownloadUrl is null or emrty: " + fileResource.DownloadUrl);
@@ -226,7 +222,7 @@ namespace AutomationHelper.GoogleAPI
             body.Parents = new List<ParentReference>() { new ParentReference() { Id = _parentId } }; 
             try
             {
-                FilesResource.InsertRequest request = service.Files.Insert(body);
+                FilesResource.InsertRequest request = _service.Files.Insert(body);
                 NewDirectory = request.Execute();
             }
             catch (Exception e)
@@ -267,7 +263,7 @@ namespace AutomationHelper.GoogleAPI
                         var byteArray = System.IO.File.ReadAllBytes(_uploadFile);
                         var stream = new MemoryStream(byteArray);
 
-                        var request = service.Files.Insert(body, stream, mimeType);
+                        var request = _service.Files.Insert(body, stream, mimeType);
                         //request.ChunkSize = 8*1024;
                         request.Upload();
                         res = request.ResponseBody;
@@ -280,11 +276,11 @@ namespace AutomationHelper.GoogleAPI
                     }
                     else
                     {
-                        Log.WarnFormat("Failed to upload file {0} from attempt: {1}", _uploadFile, i + 1);
+                        //Log.WarnFormat("Failed to upload file {0} from attempt: {1}", _uploadFile, i + 1);
                     }
                 }
-                Assert.AreEqual(res.FileSize, new FileInfo(_uploadFile).Length,
-                    "Uploaded size is incorrect: " + _uploadFile);
+                if(res.FileSize!= new FileInfo(_uploadFile).Length)
+                    throw new Exception("Uploaded size is incorrect: " + _uploadFile);
 
                 if (res == null) throw new Exception("Can't upload file '" + _uploadFile + "'. ");
                 return res;

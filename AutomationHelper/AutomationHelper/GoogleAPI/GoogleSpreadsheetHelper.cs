@@ -9,55 +9,36 @@ using System.Text.RegularExpressions;
 
 namespace AutomationHelper.GoogleAPI
 {
-    public class GoogleExcelParser
+    public class GoogleSpreadsheetHelper
     {
         //protected static readonly ILog Log = LogManager.GetLogger(typeof(GoogleExcelParser));
+        private string _spreadsheetId;
+
+        public GoogleSpreadsheetHelper(string spreadsheetId, SpreadsheetsService spreadsheetsService)
+        {
+            WorksheetFeed worksheetFeed = null;
+            _spreadsheetId = spreadsheetId;
+            Wait.UntilNumberOfExceptions(() =>
+            {
+                service = spreadsheetsService;
+                var spreadsheetLink = "https://spreadsheets.google.com/feeds/spreadsheets/" + _spreadsheetId;
+                var spreadsheetQuery = new SpreadsheetQuery(spreadsheetLink);
+                var spreadsheetFeed = service.Query(spreadsheetQuery);
+                var spreadsheetEntry = (SpreadsheetEntry) spreadsheetFeed.Entries[0];
+                worksheetFeed = spreadsheetEntry.Worksheets;
+                WorksheetEntry = (WorksheetEntry) worksheetFeed.Entries[0];
+            }, 60*1000);
+        }
 
         private SpreadsheetsService service;
-        private WorksheetFeed worksheetFeed;
-
-        private WorksheetEntry worksheetEntry;
-        private WorksheetEntry WorksheetEntry
-        {
-            get
-            {
-                if (worksheetEntry == null)
-                {
-                    ConnectToResultExcel();
-                    worksheetEntry = (WorksheetEntry) worksheetFeed.Entries[0];
-                }
-                return worksheetEntry;
-            }
-        }
+        private WorksheetEntry WorksheetEntry;
         private const string columnNotPresent = "Column is not present";
-
         private List<ListEntry> allRows;
 
         public List<ListEntry> AllRowsList
         {
             get { return allRows ?? (allRows = GetAllRows().ToList()); }
         } 
-        
-        public void ConnectToResultExcel()
-        {
-            //Log.Info("Connecting to Google Excel...");
-            Wait.UntilNumberOfExceptions(() =>
-            {
-                //Log.Info("Get GDataRequestFactory...");
-                service = new SpreadsheetsService(null) {RequestFactory = new GoogleAPIMethods().GetGDataRequestFactory()};
-
-                var resId = "19Dra8oo1cR7DVy_xeGqUaIelKXC_pASvyn7iCYwevNA";
-                var spreadsheetLink = "https://spreadsheets.google.com/feeds/spreadsheets/" + resId;
-                var spreadsheetQuery = new SpreadsheetQuery(spreadsheetLink);
-                //Log.Info("Get Result spreadSheet");
-                //spreadsheetQuery = new SpreadsheetQuery();
-                var spreadsheetFeed = service.Query(spreadsheetQuery);
-                
-                var spreadsheetEntry = (SpreadsheetEntry) spreadsheetFeed.Entries[0];
-                worksheetFeed = spreadsheetEntry.Worksheets;
-            }, 60*1000);
-            //Log.Info("Connected to Google Excel successfuly!");
-        }
 
         private void AddNewHeader(string header)
         {
@@ -79,7 +60,6 @@ namespace AutomationHelper.GoogleAPI
         /// <returns>Column letter by columnName, e.g. 'G'. If not found return 'Column is not present' message</returns>
         private string GetColumnLetterByHeader(string columnName)
         {
-
             var regex = new Regex("[A-Z]+");
             CellQuery cellQuery = new CellQuery(WorksheetEntry.CellFeedLink);
             cellQuery.MaximumRow = 1;
@@ -104,8 +84,8 @@ namespace AutomationHelper.GoogleAPI
             return letter;
         }
 
+/*
         private string lastVersion;
-
         public string LastVersion
         {
             get
@@ -129,7 +109,7 @@ namespace AutomationHelper.GoogleAPI
             
             return lastVersion;
         }
-
+        */
         public ListEntry GetRow(string header, string value)
         {
             var listFeedLink = WorksheetEntry.Links.FindService(GDataSpreadsheetsNameTable.ListRel, null);
@@ -138,7 +118,7 @@ namespace AutomationHelper.GoogleAPI
             var feed = service.Query(listQuery);
             try
             {
-                return feed.Entries.AsList().Select(e => (ListEntry)e).First();
+                return feed.Entries.Select(e => (ListEntry)e).First();
             }
             catch
             {
@@ -152,7 +132,7 @@ namespace AutomationHelper.GoogleAPI
             ListQuery listQuery = new ListQuery(listFeedLink.HRef.ToString());
             ListFeed feed = service.Query(listQuery);
 
-            return feed.Entries.AsList().Select(e => (ListEntry)e);
+            return feed.Entries.Select(e => (ListEntry)e);
         }
 
         public bool IsRowContainsColumn(ListEntry row, string columnName)
@@ -161,7 +141,7 @@ namespace AutomationHelper.GoogleAPI
                 row.Elements.Cast<ListEntry.Custom>()
                     .Any(element => element.LocalName.ToLower() == columnName.ToLower());
         }
-
+/*
         public void StoreResultToSpread(string appVersion, TestContext testContext, Stopwatch textExecutionTime, string ramUsage)
         {
             var sw = new Stopwatch();
@@ -386,6 +366,7 @@ namespace AutomationHelper.GoogleAPI
             public const string EXCEPTION = "Exception";
             public const string RAM = "RAM";
         }
+ * */
     }
 
     public static class GoogleSpreadsheetExtensions
