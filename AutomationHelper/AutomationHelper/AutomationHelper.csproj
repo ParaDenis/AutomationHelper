@@ -124,7 +124,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\LinqExtensions.cs" />
     <Compile Include="GoogleAPI\GoogleConnection.cs" />
+    <Compile Include="GoogleAPI\GoogleExcelParser.cs" />
+    <Compile Include="GoogleAPI\GoogleIO.cs" />
     <Compile Include="HTML\HtmlLogger.cs" />
     <Compile Include="Mailing\Mailer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -134,10 +137,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Exceles\" />
-    <Folder Include="Extensions\" />
     <Folder Include="FiddlerCoreAPI\" />
-    <Folder Include="GoogleAPI\GoogleDrive\" />
-    <Folder Include="GoogleAPI\GoogleSpreadsheet\" />
     <Folder Include="LANAPI\" />
     <Folder Include="Performance\" />
     <Folder Include="RestAPI\" />
