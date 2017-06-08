@@ -31,7 +31,7 @@ namespace AutomationHelper.GoogleAPI
         }
 
         private SpreadsheetsService service;
-        private WorksheetEntry WorksheetEntry;
+        public  WorksheetEntry WorksheetEntry;
         private const string columnNotPresent = "Column is not present";
         private List<ListEntry> allRows;
 
