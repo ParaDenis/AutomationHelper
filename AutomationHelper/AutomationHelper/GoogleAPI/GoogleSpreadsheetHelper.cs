@@ -40,7 +40,7 @@ namespace AutomationHelper.GoogleAPI
             get { return allRows ?? (allRows = GetAllRows().ToList()); }
         } 
 
-        private void AddNewHeader(string header)
+        public void AddNewHeader(string header)
         {
             WorksheetEntry.Cols += 1;
             WorksheetEntry.Update();
@@ -58,7 +58,7 @@ namespace AutomationHelper.GoogleAPI
         /// </summary>
         /// <param name="columnName"></param>
         /// <returns>Column letter by columnName, e.g. 'G'. If not found return 'Column is not present' message</returns>
-        private string GetColumnLetterByHeader(string columnName)
+        public string GetColumnLetterByHeader(string columnName)
         {
             var regex = new Regex("[A-Z]+");
             CellQuery cellQuery = new CellQuery(WorksheetEntry.CellFeedLink);
