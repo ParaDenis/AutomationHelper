@@ -136,6 +136,7 @@
     <Compile Include="Waiters\AutoTask.cs" />
     <Compile Include="Waiters\TaskWorker.cs" />
     <Compile Include="Waiters\Wait.cs" />
+    <Compile Include="Win32API\Win32Methods.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Exceles\" />
@@ -143,7 +144,6 @@
     <Folder Include="LANAPI\" />
     <Folder Include="Performance\" />
     <Folder Include="RestAPI\" />
-    <Folder Include="Win32API\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
