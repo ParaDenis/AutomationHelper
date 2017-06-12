@@ -74,6 +74,22 @@
       <HintPath>..\packages\MailSystem.Net-trunk.2.1.31\lib\net40\ActiveUp.Net.WhoIs.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="BasicFormatsForCore, Version=2.6.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FiddlerCore2.1.0.0\lib\net40\BasicFormatsForCore.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="BCMakeCert, Version=2.0.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FiddlerCore2.1.0.0\lib\net40\BCMakeCert.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CertMaker, Version=4.5.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FiddlerCore2.1.0.0\lib\net40\CertMaker.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FiddlerCore4, Version=4.6.2.0, Culture=neutral, PublicKeyToken=67cb91587178ac5a, processorArchitecture=MSIL">
+      <HintPath>..\packages\FiddlerCore2.1.0.0\lib\net40\FiddlerCore4.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Google.Apis, Version=1.27.1.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Apis.1.27.1\lib\net45\Google.Apis.dll</HintPath>
       <Private>True</Private>
@@ -127,6 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\LinqExtensions.cs" />
+    <Compile Include="FiddlerCoreAPI\FiddlerHelper.cs" />
     <Compile Include="GoogleAPI\GoogleConnection.cs" />
     <Compile Include="GoogleAPI\GoogleSpreadsheetHelper.cs" />
     <Compile Include="GoogleAPI\GoogleDriveHelper.cs" />
@@ -140,7 +157,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Exceles\" />
-    <Folder Include="FiddlerCoreAPI\" />
     <Folder Include="LANAPI\" />
     <Folder Include="Performance\" />
     <Folder Include="RestAPI\" />
