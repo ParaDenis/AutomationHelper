@@ -150,6 +150,7 @@
     <Compile Include="HTML\HtmlLogger.cs" />
     <Compile Include="Mailing\Mailer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RestAPI\WebRequestHelper.cs" />
     <Compile Include="Waiters\AutoTask.cs" />
     <Compile Include="Waiters\TaskWorker.cs" />
     <Compile Include="Waiters\Wait.cs" />
@@ -159,7 +160,6 @@
     <Folder Include="Exceles\" />
     <Folder Include="LANAPI\" />
     <Folder Include="Performance\" />
-    <Folder Include="RestAPI\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
