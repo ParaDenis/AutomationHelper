@@ -136,7 +136,7 @@
     <Compile Include="Waiters\AutoTask.cs" />
     <Compile Include="Waiters\TaskWorker.cs" />
     <Compile Include="Waiters\Wait.cs" />
-    <Compile Include="Win32API\Win32Methods.cs" />
+    <Compile Include="Win32API\Win32Helper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Exceles\" />

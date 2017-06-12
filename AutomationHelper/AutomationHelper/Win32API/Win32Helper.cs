@@ -6,7 +6,7 @@ using System.Text;
 
 namespace AutomationHelper.Win32API
 {
-    public class Win32Methods
+    public class Win32Helper
     {
         #region Capture Window
         /// <summary>
