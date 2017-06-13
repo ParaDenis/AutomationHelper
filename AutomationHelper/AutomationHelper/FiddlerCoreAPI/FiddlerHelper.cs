@@ -113,7 +113,6 @@ namespace AutomationHelper.FiddlerCoreAPI
         }
         #endregion
 
-
         public static void StartFiddler(int timeout = 15000)
         {
             //Log.Info("Starting Fiddler...");
@@ -229,12 +228,20 @@ namespace AutomationHelper.FiddlerCoreAPI
             var request = GetLastSessionByUrl(URL, exact);
             return request.RequestHeaders;
         }
-        
+
         public static HTTPResponseHeaders GetLastResponseHeadersByUrl(string URL, bool exact = true)
         {
             //find last Fiddler.Session with corresponding Url
             var response = GetLastSessionByUrl(URL, exact);
             return response.ResponseHeaders;
+        }
+        public static string GetLastResponseHeaderValue(string headerName, string URL, bool exact = true)
+        {
+            return GetLastResponseHeadersByUrl(URL, exact)[headerName];
+        }
+        public static string GetLastRequestHeaderValue(string headerName, string URL, bool exact = true)
+        {
+            return GetLastRequestHeadersByUrl(URL, exact)[headerName];
         }
 
         private static Session GetLastSessionByUrl(string URL, bool exact = true)
@@ -266,12 +273,20 @@ namespace AutomationHelper.FiddlerCoreAPI
             }
         }
 
-        /*public static Dictionary<string, double> GetMarketQuantitiesFromRequest()
+        public static bool IsSessionsContainsFullUrl(string fullUrl, bool exact = false)
         {
-            return
-               ClientPreference.GetMarketQuantitiesFromBodies(
-                    GetRequestBodiesByUrl(URLs.LIVE_SERVER_URL + URLs.CLIENT_PREFERENCE_SAVE));
-        }*/
+
+            return exact
+                ? oAllSessions.Any(s => s.fullUrl == fullUrl)
+                : oAllSessions.Any(s => s.fullUrl.Contains(fullUrl));
+        }
+        public static bool IsSessionsContainsUrl(string url, bool exact = false)
+        {
+
+            return exact
+                ? oAllSessions.Any(s => s.url == url)
+                : oAllSessions.Any(s => s.url.Contains(url));
+        }
     }
 
     
