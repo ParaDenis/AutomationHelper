@@ -162,6 +162,7 @@
     <Compile Include="GoogleAPI\GoogleSpreadsheetHelper.cs" />
     <Compile Include="GoogleAPI\GoogleDriveHelper.cs" />
     <Compile Include="HTML\HtmlLogger.cs" />
+    <Compile Include="LAN\LANHelper.cs" />
     <Compile Include="Mailing\Mailer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RestAPI\WebRequestHelper.cs" />
@@ -173,7 +174,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Exceles\" />
-    <Folder Include="LANAPI\" />
     <Folder Include="Performance\" />
   </ItemGroup>
   <ItemGroup>
